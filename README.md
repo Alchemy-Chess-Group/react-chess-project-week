@@ -1,3 +1,3 @@
 # react-chess-project-week
 
-woop woop
+create auth view (homepage)
