@@ -2,6 +2,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import AuthForm from './components/AuthForm';
 import Header from './components/Header';
 import Home from './components/Home';
+import Auth from './views/Auth';
 
 export default function App() {
   return (
@@ -12,8 +13,11 @@ export default function App() {
           <Route exact path="/">
             <Home />
           </Route>
-          <Route exact path="/edit-profile">
-            <AuthForm />
+          <Route exact path="/login">
+            <Auth />
+          </Route>
+          <Route exact path="/register">
+            <Auth />
           </Route>
         </Switch>
       </BrowserRouter>
