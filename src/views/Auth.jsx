@@ -22,7 +22,7 @@ export default function Auth() {
       throw error;
     }
   };
-
+  // comment
   return (
     <div>
       <AuthForm handleAuth={handleAuth} />
