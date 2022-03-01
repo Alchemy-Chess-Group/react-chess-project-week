@@ -1,3 +1,5 @@
+import ChessBoard from './components/ChessBoard/ChessBoardComponent';
+
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import AuthForm from './components/AuthForm';
 import Header from './components/Header';
@@ -11,6 +13,7 @@ export default function App() {
       <UserProvider>
         <BrowserRouter>
           <Header />
+          <ChessBoard></ChessBoard>
           <Switch>
             <Route exact path="/">
               <Home />
