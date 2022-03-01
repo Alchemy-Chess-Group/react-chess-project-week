@@ -3,6 +3,7 @@ import Home from './components/Home';
 import Auth from './views/Auth';
 import GameRoom from './views/GameRoom';
 import Layout from './components/Layout';
+import EditProfile from './components/EditProfile';
 
 export default function App() {
   return (
@@ -21,6 +22,9 @@ export default function App() {
             </Route>
             <Route exact path="/game-room">
               <GameRoom />
+            </Route>
+            <Route exact path="/edit-profile">
+              <EditProfile />
             </Route>
           </Switch>
         </Layout>
