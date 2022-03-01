@@ -1,19 +1,14 @@
-import ChessBoard from './components/ChessBoard/ChessBoard';
-
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import AuthForm from './components/AuthForm';
-import Header from './components/Header';
 import Home from './components/Home';
-import { UserProvider } from './context/UserContext';
 import Auth from './views/Auth';
+import GameRoom from './views/GameRoom';
+import Layout from './components/Layout';
 
 export default function App() {
   return (
-    <h1>
-      <ChessBoard />
-      <UserProvider>
-        <BrowserRouter>
-          <Header />
+    <>
+      <BrowserRouter>
+        <Layout>
           <Switch>
             <Route exact path="/">
               <Home />
@@ -24,9 +19,12 @@ export default function App() {
             <Route exact path="/register">
               <Auth isSigningUp />
             </Route>
+            <Route exact path="/game-room">
+              <GameRoom />
+            </Route>
           </Switch>
-        </BrowserRouter>
-      </UserProvider>
-    </h1>
+        </Layout>
+      </BrowserRouter>
+    </>
   );
 }
