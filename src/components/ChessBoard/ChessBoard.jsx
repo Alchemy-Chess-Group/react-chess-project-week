@@ -5,6 +5,7 @@ import { Chessboard } from 'react-chessboard';
 import {
   createBoard,
   fetchCurrentGame,
+  subscribeToBoard,
   updateBoard,
 } from '../../services/boards';
 
@@ -17,7 +18,9 @@ export default function ChessBoard() {
     const fetchGame = async () => {
       const data = await fetchCurrentGame();
       setCurrentGame(data);
+      subscribeToBoard();
     };
+
     fetchGame();
   }, []);
 
