@@ -50,6 +50,7 @@ export default function ChessBoard() {
         onPieceDrop={onDrop}
         position={game.fen()}
         boardOrientation="black"
+        boardWidth={300}
       />
       <button onClick={handleGameBoard}>Send Game Board</button>
     </div>
