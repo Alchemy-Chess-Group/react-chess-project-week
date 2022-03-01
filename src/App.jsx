@@ -1,6 +1,4 @@
-
 import ChessBoard from './components/ChessBoard/ChessBoardComponent';
-
 
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import AuthForm from './components/AuthForm';
@@ -12,10 +10,10 @@ import Auth from './views/Auth';
 export default function App() {
   return (
     <h1>
+      <ChessBoard />
       <UserProvider>
         <BrowserRouter>
           <Header />
-     <ChessBoard></ChessBoard>
           <Switch>
             <Route exact path="/">
               <Home />
@@ -30,6 +28,5 @@ export default function App() {
         </BrowserRouter>
       </UserProvider>
     </h1>
-
   );
 }

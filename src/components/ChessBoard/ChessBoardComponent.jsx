@@ -6,7 +6,7 @@ export default function ChessBoard() {
   const [game, setGame] = useState(new Chess());
 
   console.log('game', game.fen());
-  console.log('turn', game.turn());
+  console.log('turn', game);
 
   const onDrop = (startingSquare, targetSquare) => {
     const gameState = { ...game };
