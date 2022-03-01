@@ -1,31 +1,45 @@
 import Chess from 'chess.js';
+import { useEffect } from 'react';
 import { useState } from 'react';
 import { Chessboard } from 'react-chessboard';
-import { createBoard } from '../../services/boards';
+import {
+  createBoard,
+  fetchCurrentGame,
+  updateBoard,
+} from '../../services/boards';
 
 export default function ChessBoard() {
   const [game, setGame] = useState(new Chess());
 
-  console.log('game', game);
-  console.log('game.board', game.board());
-  // const { fen, turn } = game;
+  const [currentGame, setCurrentGame] = useState([]);
 
-  // console.log('fen', fen);
-  // console.log('turn', turn);
+  useEffect(() => {
+    const fetchGame = async () => {
+      const data = await fetchCurrentGame();
+      setCurrentGame(data);
+    };
+    fetchGame();
+  }, []);
 
-  const onDrop = (startingSquare, targetSquare) => {
+  console.log(currentGame);
+
+  const onDrop = async (startingSquare, targetSquare) => {
     const gameState = { ...game };
     const move = gameState.move({
       from: startingSquare,
       to: targetSquare,
     });
     setGame(gameState);
+    console.log('inside ondrop');
+    await updateBoard(currentGame.id, game.board());
+
     return move;
   };
 
   const handleGameBoard = async () => {
     await createBoard(game.board());
   };
+
   return (
     <div>
       <Chessboard
