@@ -23,6 +23,7 @@ export default function Auth({ isSigningUp = false }) {
       throw error;
     }
   };
+  // comment
   return (
     <div>
       <AuthForm handleAuth={handleAuth} />
