@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 
-export default function AuthForm() {
+export default function AuthForm({ handleAuth }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 

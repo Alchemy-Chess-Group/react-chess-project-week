@@ -1,10 +1,11 @@
 import React from 'react';
+import { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import AuthForm from '../components/AuthForm';
 import { useUser } from '../context/UserContext';
 import { signInUser, signUpUser } from '../services/users';
 
-export default function Auth() {
+export default function Auth({ isSigningUp = false }) {
   const { setUser } = useUser();
   const history = useHistory();
 
