@@ -10,6 +10,9 @@ export async function signOutUser() {
 
 export async function signUpUser(email, password) {
   const { user, error } = await client.auth.signUp({ email, password });
+  const { player } = await client
+    .from('players')
+    .insert([{ email: email, uuid: user.id }]);
   if (error) throw error;
   return user;
 }
