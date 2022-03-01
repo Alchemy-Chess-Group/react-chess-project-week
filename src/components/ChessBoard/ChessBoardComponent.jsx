@@ -4,7 +4,11 @@ import { Chessboard } from 'react-chessboard';
 
 export default function ChessBoard() {
   const [game, setGame] = useState(new Chess());
+
   console.log('game', game.fen());
+
+  console.log('turn', game.turn());
+
   const onDrop = (startingSquare, targetSquare) => {
     const gameState = { ...game };
     const move = gameState.move({
@@ -16,7 +20,12 @@ export default function ChessBoard() {
   };
   return (
     <div>
-      <Chessboard id="BasicBoard" onPieceDrop={onDrop} position={game.fen()} />
+      <Chessboard
+        id="BasicBoard"
+        onPieceDrop={onDrop}
+        position={game.fen()}
+        boardOrientation="black"
+      />
     </div>
   );
 }
