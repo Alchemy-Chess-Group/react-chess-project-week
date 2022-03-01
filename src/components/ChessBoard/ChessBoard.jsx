@@ -42,7 +42,6 @@ export default function ChessBoard() {
   const handleGameBoard = async () => {
     await createBoard(game.board());
   };
-
   return (
     <div>
       <Chessboard
