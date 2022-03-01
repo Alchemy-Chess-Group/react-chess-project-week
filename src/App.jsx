@@ -19,7 +19,7 @@ export default function App() {
               <Auth />
             </Route>
             <Route exact path="/register">
-              <Auth isSigningUp={true} />
+              <Auth isSigningUp />
             </Route>
           </Switch>
         </BrowserRouter>
