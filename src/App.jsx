@@ -1,4 +1,4 @@
-import ChessBoard from './components/ChessBoard/ChessBoardComponent';
+import ChessBoard from './components/ChessBoard/ChessBoard';
 
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import AuthForm from './components/AuthForm';
