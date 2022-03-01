@@ -24,6 +24,7 @@ export default function ChessBoard() {
         onPieceDrop={onDrop}
         position={game.fen()}
         boardOrientation="black"
+        boardWidth={300}
       />
     </div>
   );
