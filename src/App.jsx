@@ -1,10 +1,9 @@
-import ChessBoardComponent from './components/ChessBoard/ChessBoardComponent';
-import './App.css';
+import ChessBoard from './components/ChessBoard/ChessBoardComponent';
 
 export default function App() {
   return (
-    <h1>
-      <ChessBoardComponent />
-    </h1>
+    <div>
+      <ChessBoard></ChessBoard>
+    </div>
   );
 }
