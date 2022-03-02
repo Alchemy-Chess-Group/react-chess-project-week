@@ -5,8 +5,12 @@ export async function createBoard(currentGameState) {
   return parseData(request);
 }
 
-export async function fetchCurrentGame() {
-  const request = await client.from('boards').select('*').single();
+export async function fetchCurrentGame(id) {
+  const request = await client
+    .from('boards')
+    .select('*')
+    .match({ id })
+    .single();
   return parseData(request);
 }
 
