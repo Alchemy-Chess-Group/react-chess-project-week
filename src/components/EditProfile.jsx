@@ -1,10 +1,16 @@
 import React, { useState } from 'react';
 import { useProfile } from '../context/ProfileContext';
 import { useUser } from '../context/UserContext';
-import { deleteProfile, updateProfile } from '../services/profiles';
+import {
+  createProfile,
+  deleteProfile,
+  updateProfile,
+} from '../services/profiles';
 
 export default function EditProfile() {
   const { user } = useUser();
+  const id = user.id;
+  console.log(id);
   const { profile } = useProfile();
   const email = user.email;
   const [name, setName] = useState(profile.name);
@@ -14,6 +20,7 @@ export default function EditProfile() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     const resp = await updateProfile({
       name,
       displayName,
@@ -21,7 +28,6 @@ export default function EditProfile() {
       bio,
       avatar,
     });
-    return resp;
   };
 
   const handleDelete = async () => {

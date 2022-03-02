@@ -1,20 +1,27 @@
 import React from 'react';
+import { Redirect } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
 import { useUser } from '../context/UserContext';
 import { signOutUser } from '../services/users';
 
 export default function Header() {
-  const { user } = useUser();
+  const { user, setUser } = useUser();
   const history = useHistory();
 
   const handleSignOut = async () => {
     await signOutUser();
+    setUser({});
     history.push('/login');
   };
 
   const handleSignIn = () => {
     history.push('/login');
   };
+
+  const handleHome = () => {
+    history.push('/');
+  };
+
   return (
     <div>
       <h1>Once Upawn a Time</h1>
@@ -23,6 +30,7 @@ export default function Header() {
       ) : (
         <button onClick={handleSignIn}>Sign In</button>
       )}
+      <button onClick={handleHome}>Home</button>
     </div>
   );
 }
