@@ -7,7 +7,6 @@ import Layout from './components/Layout';
 import EditProfile from './components/EditProfile';
 import ProtectedRoute from './components/ProtectedRoute';
 
-
 export default function App() {
   return (
     <>
@@ -26,12 +25,9 @@ export default function App() {
             <Route exact path="/game-room">
               <GameRoom />
             </Route>
-
-
             <ProtectedRoute exact path="/edit-profile">
               <EditProfile />
             </ProtectedRoute>
-
           </Switch>
         </Layout>
       </BrowserRouter>
