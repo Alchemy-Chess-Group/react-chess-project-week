@@ -40,6 +40,7 @@ export default function EditProfile() {
         uuid,
       });
     }
+    history.push('/');
   };
 
   const handleDelete = async () => {
