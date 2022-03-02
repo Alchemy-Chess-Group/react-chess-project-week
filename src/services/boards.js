@@ -28,7 +28,7 @@ export async function updateBoard(id, currentGameState) {
 //     .subscribe();
 // }
 
-export async function getGamePayload() {
-  const request = client.getSubscriptions();
-  return request;
-}
+// export async function getGamePayload() {
+//   const request = client.getSubscriptions();
+//   return request;
+// }
