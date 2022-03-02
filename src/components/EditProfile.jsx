@@ -48,7 +48,7 @@ export default function EditProfile() {
     setUser({});
     history.push('/');
   };
-
+  console.log(profile);
   return (
     <>
       <form onSubmit={handleSubmit}>

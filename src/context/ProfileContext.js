@@ -23,6 +23,7 @@ const ProfileProvider = ({ children }) => {
   useEffect(() => {
     const fetchData = async () => {
       const resp = await getProfile(user.id);
+      console.log('in profile context', resp);
       setProfile(resp);
     };
     fetchData();
