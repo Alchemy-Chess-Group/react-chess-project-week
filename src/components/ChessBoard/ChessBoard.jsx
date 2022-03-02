@@ -23,13 +23,13 @@ export default function ChessBoard() {
       setCurrentGame(data);
     };
     fetchGame();
+    console.log('inside useEffect');
   }, []);
 
   useEffect(() => {
     client
       .from('boards')
       .on('*', (payload) => {
-        console.log('Change received!', payload);
         game.load(payload.new.currentGameState);
         setCurrentGame(payload.new);
       })
@@ -43,8 +43,6 @@ export default function ChessBoard() {
       to: targetSquare,
     });
     setGame(gameState);
-    console.log('gameState', gameState);
-    console.log('gameState', gameState.fen());
     const gameFen = gameState.fen();
     await updateBoard(currentGame.id, gameFen);
     return move;
@@ -58,6 +56,13 @@ export default function ChessBoard() {
     }
   };
 
+
+  const handleReset = async () => {
+    console.log('click');
+    game.reset();
+    await updateBoard(currentGame.id, game.fen());
+  };
+
   return (
     <div>
       <Chessboard
@@ -69,6 +74,7 @@ export default function ChessBoard() {
         ref={chessBoardRef}
       />
       <button onClick={handleSwitchColor}>Switch Color</button>
+      <button onClick={handleReset}>Reset</button>
     </div>
   );
 }

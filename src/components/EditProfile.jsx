@@ -47,6 +47,7 @@ export default function EditProfile() {
         uuid,
       });
     }
+    history.push('/');
   };
 
   const handleDelete = async () => {
@@ -54,7 +55,7 @@ export default function EditProfile() {
     setUser({});
     history.push('/');
   };
-
+  console.log(profile);
   return (
     <>
       <form onSubmit={handleSubmit}>
@@ -63,6 +64,7 @@ export default function EditProfile() {
           type="text"
           value={name}
           onChange={(e) => setName(e.target.value)}
+          required="required"
         />
 
         <label>Display Name</label>
@@ -70,6 +72,7 @@ export default function EditProfile() {
           type="text"
           value={displayName}
           onChange={(e) => setDisplayName(e.target.value)}
+          required="required"
         />
 
         <label>Email</label>
@@ -80,6 +83,7 @@ export default function EditProfile() {
           type="text"
           value={bio}
           onChange={(e) => setBio(e.target.value)}
+          required="required"
         />
 
         <label>Avatar</label>
@@ -87,6 +91,7 @@ export default function EditProfile() {
           type="text"
           value={avatar}
           onChange={(e) => setAvatar(e.target.value)}
+          required="required"
         />
 
         <button type="submit">Save Changes</button>
