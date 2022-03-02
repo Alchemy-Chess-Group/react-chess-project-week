@@ -1,14 +1,8 @@
 import React from 'react';
-import { useEffect } from 'react';
-import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useProfile } from '../context/ProfileContext';
-import { useUser } from '../context/UserContext';
-import { getProfile } from '../services/profiles';
 
 export default function Profile() {
-  const { user } = useUser();
-  //   const [profile, setProfile] = useState([]);
   const { profile } = useProfile();
   const { name, displayName, email, win, loss, bio, avatar } = profile;
 
