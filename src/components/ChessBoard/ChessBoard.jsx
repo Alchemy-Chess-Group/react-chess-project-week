@@ -10,7 +10,6 @@ import {
   getGamePayload,
 } from '../../services/boards';
 import { client } from '../../services/client';
-import { convertString } from '../../utils/utils';
 
 export default function ChessBoard() {
   const [game, setGame] = useState(new Chess());
@@ -20,11 +19,10 @@ export default function ChessBoard() {
 
   useEffect(() => {
     const fetchGame = async () => {
-      const data = await fetchCurrentGame();
+      const data = await fetchCurrentGame(currentGame.id);
       setCurrentGame(data);
     };
     fetchGame();
-    console.log('inside useEffect');
   }, []);
 
   useEffect(() => {
@@ -32,11 +30,11 @@ export default function ChessBoard() {
       .from('boards')
       .on('*', (payload) => {
         console.log('Change received!', payload);
+        game.load(payload.new.currentGameState);
         setCurrentGame(payload.new);
       })
       .subscribe();
   }, []);
-  console.log('currentGame', currentGame);
 
   const onDrop = async (startingSquare, targetSquare) => {
     const gameState = { ...game };
@@ -45,7 +43,9 @@ export default function ChessBoard() {
       to: targetSquare,
     });
     setGame(gameState);
-    const gameFen = game.fen();
+    console.log('gameState', gameState);
+    console.log('gameState', gameState.fen());
+    const gameFen = gameState.fen();
     await updateBoard(currentGame.id, gameFen);
     return move;
   };
@@ -56,6 +56,10 @@ export default function ChessBoard() {
     } else {
       setColor('white');
     }
+  };
+
+  const handleReset = () => {
+    game.load();
   };
 
   return (
@@ -69,6 +73,7 @@ export default function ChessBoard() {
         ref={chessBoardRef}
       />
       <button onClick={handleSwitchColor}>Switch Color</button>
+      <button onClick={handleReset}>Reset</button>
     </div>
   );
 }
