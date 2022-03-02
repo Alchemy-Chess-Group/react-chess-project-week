@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useProfile } from '../context/ProfileContext';
 import { useUser } from '../context/UserContext';
-import { updateProfile } from '../services/profiles';
+import { deleteProfile, updateProfile } from '../services/profiles';
 
 export default function EditProfile() {
   const { user } = useUser();
@@ -14,41 +14,57 @@ export default function EditProfile() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const resp = await updateProfile({ name, displayName, email, bio, avatar });
+    const resp = await updateProfile({
+      name,
+      displayName,
+      email,
+      bio,
+      avatar,
+    });
     return resp;
   };
 
-  // const
+  const handleDelete = async () => {
+    await deleteProfile(user.id);
+  };
+
   return (
-    <form onSubmit={handleSubmit}>
-      <label>Name</label>
-      <input
-        type="text"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-      />
+    <>
+      <form onSubmit={handleSubmit}>
+        <label>Name</label>
+        <input
+          type="text"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
 
-      <label>Display Name</label>
-      <input
-        type="text"
-        value={displayName}
-        onChange={(e) => setDisplayName(e.target.value)}
-      />
+        <label>Display Name</label>
+        <input
+          type="text"
+          value={displayName}
+          onChange={(e) => setDisplayName(e.target.value)}
+        />
 
-      <label>Email</label>
-      <div>{email}</div>
+        <label>Email</label>
+        <div>{email}</div>
 
-      <label>Bio</label>
-      <input type="text" value={bio} onChange={(e) => setBio(e.target.value)} />
+        <label>Bio</label>
+        <input
+          type="text"
+          value={bio}
+          onChange={(e) => setBio(e.target.value)}
+        />
 
-      <label>Avatar</label>
-      <input
-        type="text"
-        value={avatar}
-        onChange={(e) => setAvatar(e.target.value)}
-      />
+        <label>Avatar</label>
+        <input
+          type="text"
+          value={avatar}
+          onChange={(e) => setAvatar(e.target.value)}
+        />
 
-      <button type="submit">Save Changes</button>
-    </form>
+        <button type="submit">Save Changes</button>
+      </form>
+      <button onClick={handleDelete}>Delete</button>
+    </>
   );
 }
