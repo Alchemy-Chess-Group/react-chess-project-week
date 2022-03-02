@@ -53,6 +53,7 @@ export default function ChessBoard() {
     await createBoard(game.board());
   };
 
+
   const convertStringCase = () => {
     const fenArray = currentGame.currentGameState.split(' ');
     console.log('fenArray', fenArray);
@@ -64,6 +65,7 @@ export default function ChessBoard() {
       converted.concat(splicedFenArray).replace(/,/g, ' ')
     );
   };
+
 
   return (
     <div>
