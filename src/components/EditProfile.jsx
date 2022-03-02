@@ -1,10 +1,17 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { useProfile } from '../context/ProfileContext';
 import { useUser } from '../context/UserContext';
-import { deleteProfile, updateProfile } from '../services/profiles';
+import {
+  createProfile,
+  deleteProfile,
+  updateProfile,
+} from '../services/profiles';
 
 export default function EditProfile() {
-  const { user } = useUser();
+  const { user, setUser } = useUser();
+  const uuid = user.id;
+  const history = useHistory();
   const { profile } = useProfile();
   const email = user.email;
   const [name, setName] = useState(profile.name);
@@ -14,18 +21,31 @@ export default function EditProfile() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const resp = await updateProfile({
-      name,
-      displayName,
-      email,
-      bio,
-      avatar,
-    });
-    return resp;
+
+    if (profile.name) {
+      const resp = await updateProfile({
+        name,
+        displayName,
+        email,
+        bio,
+        avatar,
+      });
+    } else {
+      const resp = await createProfile({
+        name,
+        displayName,
+        email,
+        bio,
+        avatar,
+        uuid,
+      });
+    }
   };
 
   const handleDelete = async () => {
     await deleteProfile(user.id);
+    setUser({});
+    history.push('/');
   };
 
   return (
