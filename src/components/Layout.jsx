@@ -8,11 +8,9 @@ export default function Layout({ children }) {
   return (
     <div>
       <UserProvider>
-        <ProfileProvider>
-          <Header />
-          {children}
-          <Footer />
-        </ProfileProvider>
+        <Header />
+        {children}
+        <Footer />
       </UserProvider>
     </div>
   );

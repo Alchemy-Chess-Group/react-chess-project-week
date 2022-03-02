@@ -6,24 +6,20 @@ export const ProfileContext = createContext();
 
 const ProfileProvider = ({ children }) => {
   const { user } = useUser();
-  const [profile, setProfile] = useState(
-    name
-      ? {
-          name: '',
-          displayName: '',
-          win: '',
-          loss: '',
-          bio: '',
-          avatar: '',
-        }
-      : {}
-  );
   console.log();
+  const [profile, setProfile] = useState({
+    name: '',
+    displayName: '',
+    win: '',
+    loss: '',
+    bio: '',
+    avatar: '',
+  });
 
   useEffect(() => {
     const fetchData = async () => {
-      const resp = await getProfile(user.id);
-      console.log('in profile context', resp);
+      console.log('response');
+      const [resp] = await getProfile(user.id);
       setProfile(resp);
     };
     fetchData();

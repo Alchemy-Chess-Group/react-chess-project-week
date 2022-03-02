@@ -3,7 +3,6 @@ import { getAllProfiles } from '../services/profiles';
 
 export default function ProfileList() {
   const [profiles, setProfiles] = useState([]);
-  console.log('profiles', profiles);
 
   useEffect(() => {
     const fetchData = async () => {
