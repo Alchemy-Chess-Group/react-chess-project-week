@@ -1,7 +1,16 @@
 import { client, parseData } from './client';
 
-export async function getProfile() {
-  const request = await client.from('players').select().single();
+export async function getProfile(uuid) {
+  const request = await client
+    .from('players')
+    .select()
+    .single()
+    .match({ uuid });
+  return parseData(request);
+}
+
+export async function getAllProfiles() {
+  const request = await client.from('players').select('*');
   return parseData(request);
 }
 
@@ -20,7 +29,8 @@ export async function updateProfile({ name, displayName, email, bio, avatar }) {
   return parseData(request);
 }
 
-export async function deleteProfile(email) {
-  const request = await client.from('players').delete('*').match({ email });
+export async function deleteProfile(uuid) {
+  console.log('uuid', uuid);
+  const request = await client.from('players').delete('*').match({ uuid });
   return parseData(request);
 }
