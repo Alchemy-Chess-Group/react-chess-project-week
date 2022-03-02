@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { useProfile } from '../context/ProfileContext';
 import { useUser } from '../context/UserContext';
 import { deleteProfile, updateProfile } from '../services/profiles';
-import { deleteUser } from '../services/users';
 
 export default function EditProfile() {
   const { user } = useUser();
