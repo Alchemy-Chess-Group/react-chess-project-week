@@ -10,7 +10,6 @@ import {
   getGamePayload,
 } from '../../services/boards';
 import { client } from '../../services/client';
-import { convertString } from '../../utils/utils';
 
 export default function ChessBoard() {
   const [game, setGame] = useState(new Chess());
