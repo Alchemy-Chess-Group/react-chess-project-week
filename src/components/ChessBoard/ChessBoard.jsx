@@ -10,10 +10,11 @@ import {
   getGamePayload,
 } from '../../services/boards';
 import { client } from '../../services/client';
+import { convertString } from '../../utils/utils';
 
 export default function ChessBoard() {
   const [game, setGame] = useState(new Chess());
-  const [currentGame, setCurrentGame] = useState([]);
+  const [currentGame, setCurrentGame] = useState({ id: 13 });
   const [currentGamePayload, setCurrentGamePayload] = useState([]);
 
   useEffect(() => {
@@ -52,6 +53,18 @@ export default function ChessBoard() {
     await createBoard(game.board());
   };
 
+  const convertStringCase = () => {
+    const fenArray = currentGame.currentGameState.split(' ');
+    console.log('fenArray', fenArray);
+    const splicedFenArray = fenArray.slice(1);
+    console.log('slicedFenArray', splicedFenArray);
+    const converted = convertString(fenArray[0]);
+    console.log(
+      'converted',
+      converted.concat(splicedFenArray).replace(/,/g, ' ')
+    );
+  };
+
   return (
     <div>
       <Chessboard
@@ -61,6 +74,7 @@ export default function ChessBoard() {
         boardOrientation="black"
         boardWidth={300}
       />
+      <button onClick={convertStringCase}> convert String</button>
       <button onClick={handleGameBoard}>Send Game Board</button>
     </div>
   );
