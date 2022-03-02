@@ -25,7 +25,6 @@ export default function App() {
             <Route exact path="/game-room">
               <GameRoom />
             </Route>
-
             <ProtectedRoute exact path="/edit-profile">
               <EditProfile />
             </ProtectedRoute>
