@@ -12,6 +12,7 @@ export default function ChatBox() {
       const data = await fetchMessages();
       console.log('data', data);
       setMessages(data);
+      setLoading(false);
     };
     fetchData();
   }, []);
@@ -20,12 +21,11 @@ export default function ChatBox() {
     client
       .from('chatbox')
       .on('*', (payload) => {
-        setMessages(payload);
-        console.log(payload);
+        setMessages((prevState) => [...prevState, payload.new]);
       })
       .subscribe();
   }, []);
-
+  console.log('messages', messages);
   const handleSendMessage = async (e) => {
     e.preventDefault();
     await sendMessage(name, text);
@@ -33,6 +33,12 @@ export default function ChatBox() {
 
   return (
     <div>
+      {messages.map((item) => (
+        <div key={item.id}>
+          <p>{item.name}</p>
+          <p>{item.text}</p>
+        </div>
+      ))}
       <form onSubmit={handleSendMessage}>
         <label>
           Name
