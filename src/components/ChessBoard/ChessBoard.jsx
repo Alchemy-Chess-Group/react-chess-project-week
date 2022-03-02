@@ -35,6 +35,7 @@ export default function ChessBoard() {
       })
       .subscribe();
   }, []);
+  console.log('gameState.fen', game.fen());
 
   const onDrop = async (startingSquare, targetSquare) => {
     const gameState = { ...game };
@@ -58,8 +59,10 @@ export default function ChessBoard() {
     }
   };
 
-  const handleReset = () => {
-    game.load();
+  const handleReset = async () => {
+    console.log('click');
+    game.reset();
+    await updateBoard(currentGame.id, game.fen());
   };
 
   return (
