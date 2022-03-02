@@ -18,6 +18,7 @@ export default function AuthForm({ handleAuth }) {
           value={email}
           type="email"
           placeholder="email"
+          required="required"
         />
       </label>
 
@@ -27,6 +28,7 @@ export default function AuthForm({ handleAuth }) {
           value={password}
           type="password"
           placeholder="password"
+          required="required"
         />
       </label>
       <button onClick={handleSubmit}>submit</button>
