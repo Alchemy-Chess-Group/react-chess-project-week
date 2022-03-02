@@ -29,13 +29,11 @@ export default function ChessBoard() {
     client
       .from('boards')
       .on('*', (payload) => {
-        console.log('Change received!', payload);
         game.load(payload.new.currentGameState);
         setCurrentGame(payload.new);
       })
       .subscribe();
   }, []);
-  console.log('gameState.fen', game.fen());
 
   const onDrop = async (startingSquare, targetSquare) => {
     const gameState = { ...game };
@@ -44,8 +42,6 @@ export default function ChessBoard() {
       to: targetSquare,
     });
     setGame(gameState);
-    console.log('gameState', gameState);
-    console.log('gameState', gameState.fen());
     const gameFen = gameState.fen();
     await updateBoard(currentGame.id, gameFen);
     return move;
