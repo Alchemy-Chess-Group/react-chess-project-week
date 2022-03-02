@@ -13,7 +13,7 @@ export default function Auth({ isSigningUp = false }) {
     try {
       if (isSigningUp) {
         await signUpUser(email, password);
-        history.replace('/profile');
+        history.replace('/edit-profile');
       } else {
         const resp = await signInUser(email, password);
         setUser({ id: resp.id, email: resp.email });
@@ -23,7 +23,6 @@ export default function Auth({ isSigningUp = false }) {
       throw error;
     }
   };
-  // comment
   return (
     <div>
       <AuthForm handleAuth={handleAuth} />
