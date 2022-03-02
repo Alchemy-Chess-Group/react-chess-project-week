@@ -1,5 +1,5 @@
 import Chess from 'chess.js';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { useState } from 'react';
 import { Chessboard } from 'react-chessboard';
 import {
@@ -7,24 +7,34 @@ import {
   fetchCurrentGame,
   subscribeToBoard,
   updateBoard,
+  getGamePayload,
 } from '../../services/boards';
+import { client } from '../../services/client';
 
 export default function ChessBoard() {
   const [game, setGame] = useState(new Chess());
-
-  const [currentGame, setCurrentGame] = useState([]);
+  const [currentGame, setCurrentGame] = useState({ id: 13 });
+  const [color, setColor] = useState('white');
+  const chessBoardRef = useRef();
 
   useEffect(() => {
     const fetchGame = async () => {
-      const data = await fetchCurrentGame();
+      const data = await fetchCurrentGame(currentGame.id);
       setCurrentGame(data);
-      subscribeToBoard();
     };
-
     fetchGame();
   }, []);
 
-  console.log(currentGame);
+  useEffect(() => {
+    client
+      .from('boards')
+      .on('*', (payload) => {
+        console.log('Change received!', payload);
+        game.load(payload.new.currentGameState);
+        setCurrentGame(payload.new);
+      })
+      .subscribe();
+  }, []);
 
   const onDrop = async (startingSquare, targetSquare) => {
     const gameState = { ...game };
@@ -33,25 +43,32 @@ export default function ChessBoard() {
       to: targetSquare,
     });
     setGame(gameState);
-    console.log('inside ondrop');
-    await updateBoard(currentGame.id, game.board());
-
+    console.log('gameState', gameState);
+    console.log('gameState', gameState.fen());
+    const gameFen = gameState.fen();
+    await updateBoard(currentGame.id, gameFen);
     return move;
   };
 
-  const handleGameBoard = async () => {
-    await createBoard(game.board());
+  const handleSwitchColor = () => {
+    if (color === 'white') {
+      setColor('black');
+    } else {
+      setColor('white');
+    }
   };
+
   return (
     <div>
       <Chessboard
         id="BasicBoard"
         onPieceDrop={onDrop}
-        position={game.fen()}
-        boardOrientation="black"
+        position={currentGame.currentGameState}
+        boardOrientation={color}
         boardWidth={300}
+        ref={chessBoardRef}
       />
-      <button onClick={handleGameBoard}>Send Game Board</button>
+      <button onClick={handleSwitchColor}>Switch Color</button>
     </div>
   );
 }

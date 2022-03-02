@@ -3,6 +3,7 @@ import Home from './components/Home';
 import Auth from './views/Auth';
 import GameRoom from './views/GameRoom';
 import Layout from './components/Layout';
+
 import EditProfile from './components/EditProfile';
 import ProtectedRoute from './components/ProtectedRoute';
 

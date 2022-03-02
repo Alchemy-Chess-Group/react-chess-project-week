@@ -5,8 +5,12 @@ export async function createBoard(currentGameState) {
   return parseData(request);
 }
 
-export async function fetchCurrentGame() {
-  const request = await client.from('boards').select('*').single();
+export async function fetchCurrentGame(id) {
+  const request = await client
+    .from('boards')
+    .select('*')
+    .match({ id })
+    .single();
   return parseData(request);
 }
 
@@ -18,12 +22,17 @@ export async function updateBoard(id, currentGameState) {
   return parseData(request);
 }
 
-export async function subscribeToBoard() {
-  const request = await client
-    .from('*')
-    .on('*', (payload) => {
-      console.log('Change received!', payload);
-    })
-    .subscribe();
-  return parseData(request);
-}
+// export async function subscribeToBoard(cb) {
+//   client
+//     .from('boards')
+//     .on('*', (payload) => {
+//       console.log('Change received!', payload);
+//       cb(payload.new);
+//     })
+//     .subscribe();
+// }
+
+// export async function getGamePayload() {
+//   const request = client.getSubscriptions();
+//   return request;
+// }
