@@ -7,24 +7,34 @@ import {
   fetchCurrentGame,
   subscribeToBoard,
   updateBoard,
+  getGamePayload,
 } from '../../services/boards';
+import { client } from '../../services/client';
 
 export default function ChessBoard() {
   const [game, setGame] = useState(new Chess());
-
   const [currentGame, setCurrentGame] = useState([]);
+  const [currentGamePayload, setCurrentGamePayload] = useState([]);
 
   useEffect(() => {
     const fetchGame = async () => {
       const data = await fetchCurrentGame();
       setCurrentGame(data);
-      subscribeToBoard();
     };
-
     fetchGame();
+    console.log('inside useEffect');
   }, []);
 
-  console.log(currentGame);
+  useEffect(() => {
+    client
+      .from('boards')
+      .on('*', (payload) => {
+        console.log('Change received!', payload);
+        setCurrentGame(payload.new);
+      })
+      .subscribe();
+  });
+  console.log('currentGame', currentGame);
 
   const onDrop = async (startingSquare, targetSquare) => {
     const gameState = { ...game };
@@ -33,8 +43,7 @@ export default function ChessBoard() {
       to: targetSquare,
     });
     setGame(gameState);
-    console.log('inside ondrop');
-    await updateBoard(currentGame.id, game.board());
+    await updateBoard(currentGame.id, game.fen());
 
     return move;
   };
@@ -48,7 +57,7 @@ export default function ChessBoard() {
       <Chessboard
         id="BasicBoard"
         onPieceDrop={onDrop}
-        position={game.fen()}
+        position={currentGame.currentGameState}
         boardOrientation="black"
         boardWidth={300}
       />
