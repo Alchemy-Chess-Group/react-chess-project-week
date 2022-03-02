@@ -30,7 +30,6 @@ export default function ChessBoard() {
     client
       .from('boards')
       .on('*', (payload) => {
-        console.log('Change received!', payload);
         game.load(payload.new.currentGameState);
         setCurrentGame(payload.new);
       })
@@ -44,8 +43,6 @@ export default function ChessBoard() {
       to: targetSquare,
     });
     setGame(gameState);
-    console.log('gameState', gameState);
-    console.log('gameState', gameState.fen());
     const gameFen = gameState.fen();
     await updateBoard(currentGame.id, gameFen);
     return move;
@@ -59,17 +56,12 @@ export default function ChessBoard() {
     }
   };
 
-  const [invertedFen, setInvertedFen] = useState('');
 
-  const convertStringCase = () => {
-    const fenArray = currentGame.currentGameState.split(' ');
-    console.log('fenArray', fenArray);
-    const splicedFenArray = fenArray.slice(1);
-    console.log('slicedFenArray', splicedFenArray);
-    const converted = convertString(fenArray[0]);
-    setInvertedFen(converted.concat(splicedFenArray).replace(/,/g, ' '));
+  const handleReset = async () => {
+    console.log('click');
+    game.reset();
+    await updateBoard(currentGame.id, game.fen());
   };
-  // console.log(invertedFen);
 
   return (
     <div>
@@ -82,6 +74,7 @@ export default function ChessBoard() {
         ref={chessBoardRef}
       />
       <button onClick={handleSwitchColor}>Switch Color</button>
+      <button onClick={handleReset}>Reset</button>
     </div>
   );
 }
