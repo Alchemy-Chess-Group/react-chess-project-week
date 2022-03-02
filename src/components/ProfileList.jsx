@@ -16,7 +16,9 @@ export default function ProfileList() {
   return (
     <ul>
       {profiles.map((profile) => (
-        <li key={profile.id}>{profile.displayName}</li>
+        <li key={profile.id}>
+          {profile.displayName ? profile.displayName : null}
+        </li>
       ))}
     </ul>
   );

@@ -14,10 +14,17 @@ export async function getAllProfiles() {
   return parseData(request);
 }
 
-export async function createProfile({ name, displayName, email, bio, avatar }) {
+export async function createProfile({
+  name,
+  displayName,
+  email,
+  bio,
+  avatar,
+  uuid,
+}) {
   const request = await client
     .from('players')
-    .insert({ name, displayName, email, bio, avatar });
+    .insert({ name, displayName, email, bio, avatar, uuid });
   return parseData(request);
 }
 
