@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { fetchMessages, sendMessage } from '../services/chatbox';
-import { client } from '../services/client';
+import { fetchMessages, sendMessage } from '../../services/chatbox';
+import { client } from '../../services/client';
+import style from './ChatBox.css';
 
 export default function ChatBox() {
   const [name, setName] = useState('');
@@ -20,8 +21,7 @@ export default function ChatBox() {
     client
       .from('chatbox')
       .on('*', (payload) => {
-        setMessages(payload);
-        console.log(payload);
+        setMessages((prevState) => [...prevState, payload.new]);
       })
       .subscribe();
   }, []);
@@ -29,10 +29,19 @@ export default function ChatBox() {
   const handleSendMessage = async (e) => {
     e.preventDefault();
     await sendMessage(name, text);
+    setText('');
   };
 
   return (
     <div>
+      <section className={style.chatBox}>
+        {messages.map((item) => (
+          <div key={item.id}>
+            <p>{item.name}</p>
+            <p>{item.text}</p>
+          </div>
+        ))}
+      </section>
       <form onSubmit={handleSendMessage}>
         <label>
           Name
@@ -44,7 +53,7 @@ export default function ChatBox() {
         </label>
         <label>
           Text
-          <input
+          <textarea
             type="text"
             value={text}
             onChange={(e) => setText(e.target.value)}
