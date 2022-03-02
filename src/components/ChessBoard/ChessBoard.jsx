@@ -1,5 +1,5 @@
 import Chess from 'chess.js';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { useState } from 'react';
 import { Chessboard } from 'react-chessboard';
 import {
@@ -16,6 +16,7 @@ export default function ChessBoard() {
   const [game, setGame] = useState(new Chess());
   const [currentGame, setCurrentGame] = useState({ id: 13 });
   const [color, setColor] = useState('white');
+  const chessBoardRef = useRef();
 
   useEffect(() => {
     const fetchGame = async () => {
@@ -34,7 +35,7 @@ export default function ChessBoard() {
         setCurrentGame(payload.new);
       })
       .subscribe();
-  });
+  }, []);
   console.log('currentGame', currentGame);
 
   const onDrop = async (startingSquare, targetSquare) => {
@@ -44,13 +45,9 @@ export default function ChessBoard() {
       to: targetSquare,
     });
     setGame(gameState);
-    await updateBoard(currentGame.id, game.fen());
-
+    const gameFen = game.fen();
+    await updateBoard(currentGame.id, gameFen);
     return move;
-  };
-
-  const handleGameBoard = async () => {
-    await createBoard(game.board());
   };
 
   const handleSwitchColor = () => {
@@ -69,8 +66,8 @@ export default function ChessBoard() {
         position={currentGame.currentGameState}
         boardOrientation={color}
         boardWidth={300}
+        ref={chessBoardRef}
       />
-      <button onClick={handleGameBoard}>Send Game Board</button>
       <button onClick={handleSwitchColor}>Switch Color</button>
     </div>
   );
