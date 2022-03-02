@@ -15,7 +15,7 @@ import { convertString } from '../../utils/utils';
 export default function ChessBoard() {
   const [game, setGame] = useState(new Chess());
   const [currentGame, setCurrentGame] = useState({ id: 13 });
-  const [currentGamePayload, setCurrentGamePayload] = useState([]);
+  const [color, setColor] = useState('white');
 
   useEffect(() => {
     const fetchGame = async () => {
@@ -53,19 +53,13 @@ export default function ChessBoard() {
     await createBoard(game.board());
   };
 
-
-  const convertStringCase = () => {
-    const fenArray = currentGame.currentGameState.split(' ');
-    console.log('fenArray', fenArray);
-    const splicedFenArray = fenArray.slice(1);
-    console.log('slicedFenArray', splicedFenArray);
-    const converted = convertString(fenArray[0]);
-    console.log(
-      'converted',
-      converted.concat(splicedFenArray).replace(/,/g, ' ')
-    );
+  const handleSwitchColor = () => {
+    if (color === 'white') {
+      setColor('black');
+    } else {
+      setColor('white');
+    }
   };
-
 
   return (
     <div>
@@ -73,11 +67,11 @@ export default function ChessBoard() {
         id="BasicBoard"
         onPieceDrop={onDrop}
         position={currentGame.currentGameState}
-        boardOrientation="black"
+        boardOrientation={color}
         boardWidth={300}
       />
-      <button onClick={convertStringCase}> convert String</button>
       <button onClick={handleGameBoard}>Send Game Board</button>
+      <button onClick={handleSwitchColor}>Switch Color</button>
     </div>
   );
 }
