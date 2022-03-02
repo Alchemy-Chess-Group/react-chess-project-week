@@ -1,5 +1,5 @@
 import Chess from 'chess.js';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { useState } from 'react';
 import { Chessboard } from 'react-chessboard';
 import {
@@ -10,16 +10,16 @@ import {
   getGamePayload,
 } from '../../services/boards';
 import { client } from '../../services/client';
-import { convertString } from '../../utils/utils';
 
 export default function ChessBoard() {
   const [game, setGame] = useState(new Chess());
   const [currentGame, setCurrentGame] = useState({ id: 13 });
-  const [currentGamePayload, setCurrentGamePayload] = useState([]);
+  const [color, setColor] = useState('white');
+  const chessBoardRef = useRef();
 
   useEffect(() => {
     const fetchGame = async () => {
-      const data = await fetchCurrentGame();
+      const data = await fetchCurrentGame(currentGame.id);
       setCurrentGame(data);
     };
     fetchGame();
@@ -31,11 +31,11 @@ export default function ChessBoard() {
       .from('boards')
       .on('*', (payload) => {
         console.log('Change received!', payload);
+        game.load(payload.new.currentGameState);
         setCurrentGame(payload.new);
       })
       .subscribe();
-  });
-  console.log('currentGame', currentGame);
+  }, []);
 
   const onDrop = async (startingSquare, targetSquare) => {
     const gameState = { ...game };
@@ -44,13 +44,19 @@ export default function ChessBoard() {
       to: targetSquare,
     });
     setGame(gameState);
-    await updateBoard(currentGame.id, game.fen());
-
+    console.log('gameState', gameState);
+    console.log('gameState', gameState.fen());
+    const gameFen = gameState.fen();
+    await updateBoard(currentGame.id, gameFen);
     return move;
   };
 
-  const handleGameBoard = async () => {
-    await createBoard(game.board());
+  const handleSwitchColor = () => {
+    if (color === 'white') {
+      setColor('black');
+    } else {
+      setColor('white');
+    }
   };
 
   const [invertedFen, setInvertedFen] = useState('');
@@ -71,11 +77,11 @@ export default function ChessBoard() {
         id="BasicBoard"
         onPieceDrop={onDrop}
         position={currentGame.currentGameState}
-        boardOrientation="black"
+        boardOrientation={color}
         boardWidth={300}
+        ref={chessBoardRef}
       />
-      <button onClick={convertStringCase}> convert String</button>
-      <button onClick={handleGameBoard}>Send Game Board</button>
+      <button onClick={handleSwitchColor}>Switch Color</button>
     </div>
   );
 }
