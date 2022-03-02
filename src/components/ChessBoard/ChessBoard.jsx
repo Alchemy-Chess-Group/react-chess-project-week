@@ -53,17 +53,17 @@ export default function ChessBoard() {
     await createBoard(game.board());
   };
 
+  const [invertedFen, setInvertedFen] = useState('');
+
   const convertStringCase = () => {
     const fenArray = currentGame.currentGameState.split(' ');
     console.log('fenArray', fenArray);
     const splicedFenArray = fenArray.slice(1);
     console.log('slicedFenArray', splicedFenArray);
     const converted = convertString(fenArray[0]);
-    console.log(
-      'converted',
-      converted.concat(splicedFenArray).replace(/,/g, ' ')
-    );
+    setInvertedFen(converted.concat(splicedFenArray).replace(/,/g, ' '));
   };
+  // console.log(invertedFen);
 
   return (
     <div>
