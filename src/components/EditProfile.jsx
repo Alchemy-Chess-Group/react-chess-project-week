@@ -31,7 +31,7 @@ export default function EditProfile() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (profile.name) {
+    if (user.email) {
       const resp = await updateProfile({
         name,
         displayName,
