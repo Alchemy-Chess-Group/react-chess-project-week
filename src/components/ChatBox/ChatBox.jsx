@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from 'react';
+import { useProfile } from '../../context/ProfileContext';
 import { fetchMessages, sendMessage } from '../../services/chatbox';
 import { client } from '../../services/client';
 import style from './ChatBox.css';
 
 export default function ChatBox() {
-  const [name, setName] = useState('');
   const [text, setText] = useState('');
   const [messages, setMessages] = useState([]);
+  const {
+    profile: { displayName },
+  } = useProfile();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -28,7 +31,7 @@ export default function ChatBox() {
 
   const handleSendMessage = async (e) => {
     e.preventDefault();
-    await sendMessage(name, text);
+    await sendMessage(displayName, text);
     setText('');
   };
 
@@ -43,14 +46,7 @@ export default function ChatBox() {
         ))}
       </section>
       <form onSubmit={handleSendMessage}>
-        <label>
-          Name
-          <input
-            type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
-        </label>
+        <label>{displayName}</label>
         <label>
           Text
           <textarea
