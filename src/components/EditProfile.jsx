@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useProfile } from '../context/ProfileContext';
 import { useUser } from '../context/UserContext';
@@ -18,6 +18,15 @@ export default function EditProfile() {
   const [displayName, setDisplayName] = useState(profile.displayName);
   const [bio, setBio] = useState(profile.bio);
   const [avatar, setAvatar] = useState(profile.avatar);
+
+  console.log('inside edit');
+
+  useEffect(() => {
+    setName(profile.name);
+    setDisplayName(profile.displayName);
+    setBio(profile.bio);
+    setAvatar(profile.avatar);
+  }, [profile]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -48,7 +57,7 @@ export default function EditProfile() {
     setUser({});
     history.push('/');
   };
-
+  console.log(profile);
   return (
     <>
       <form onSubmit={handleSubmit}>
