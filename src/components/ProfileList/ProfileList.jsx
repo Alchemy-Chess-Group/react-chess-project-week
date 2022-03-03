@@ -18,9 +18,13 @@ export default function ProfileList() {
     <div>
       <ul className={style.listCard}>
         {profiles.map((profile) => (
-          <li key={profile.id}>
-            <ProfilePop profile={profile} />
-          </li>
+          <>
+            {profile.displayName && (
+              <li key={profile.id}>
+                <ProfilePop profile={profile} />
+              </li>
+            )}
+          </>
         ))}
       </ul>
     </div>
