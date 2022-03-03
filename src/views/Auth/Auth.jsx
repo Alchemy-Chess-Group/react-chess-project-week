@@ -1,5 +1,4 @@
 import React from 'react';
-import { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import AuthForm from '../../components/AuthForm/AuthForm';
 import { useUser } from '../../context/UserContext';
