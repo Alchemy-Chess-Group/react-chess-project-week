@@ -23,9 +23,11 @@ export default function App() {
             <Route exact path="/register">
               <Auth isSigningUp />
             </Route>
-            <Route exact path="/game-room">
-              <GameRoom />
-            </Route>
+            <ProfileProvider>
+              <ProtectedRoute exact path="/game-room">
+                <GameRoom />
+              </ProtectedRoute>
+            </ProfileProvider>
             <ProtectedRoute exact path="/edit-profile">
               <ProfileProvider>
                 <EditProfile />
