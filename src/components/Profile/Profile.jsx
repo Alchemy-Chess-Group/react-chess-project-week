@@ -6,6 +6,7 @@ import style from './Profile.css';
 export default function Profile() {
   const { profile } = useProfile();
   const { name, displayName, email, win, loss, bio, avatar } = profile;
+  console.log('profile', name);
 
   return (
     <div className={style.profile}>

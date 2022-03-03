@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { getAllProfiles } from '../../services/profiles';
-import ProfilePop from '../ProfilePop';
+import ProfilePop from '../ProfilePop/ProfilePop';
 import style from './ProfileList.css';
 
 export default function ProfileList() {
