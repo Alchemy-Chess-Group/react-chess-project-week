@@ -33,7 +33,7 @@ export default function EditProfile() {
     e.preventDefault();
 
     if (user.email) {
-      const resp = await updateProfile({
+      await updateProfile({
         name,
         displayName,
         email,
@@ -41,7 +41,7 @@ export default function EditProfile() {
         avatar,
       });
     } else {
-      const resp = await createProfile({
+      await createProfile({
         name,
         displayName,
         email,
