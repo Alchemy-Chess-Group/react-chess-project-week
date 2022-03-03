@@ -1,5 +1,5 @@
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import Home from './components/Home';
+import Home from './views/Home';
 import Auth from './views/Auth';
 import GameRoom from './views/GameRoom/GameRoom';
 import Layout from './components/Layout';
@@ -28,7 +28,7 @@ export default function App() {
                 <GameRoom />
               </ProtectedRoute>
             </ProfileProvider>
-            <ProtectedRoute exact path="/edit-profile">
+            <ProtectedRoute path="/edit-profile">
               <ProfileProvider>
                 <EditProfile />
               </ProfileProvider>
