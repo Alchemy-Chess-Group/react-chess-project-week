@@ -12,7 +12,9 @@ export default function Home() {
     <div className={style.homePage}>
       <ProfileProvider>
         {user.email ? <Profile /> : <div></div>}
-        <Link to="/game-room">Room 13</Link>
+        <Link to="/game-room">
+          <h1>Room 13</h1>
+        </Link>
         <ProfileList />
       </ProfileProvider>
     </div>

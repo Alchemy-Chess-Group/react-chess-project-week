@@ -39,8 +39,8 @@ export default function ChatBox() {
     <div>
       <section className={style.chatBox}>
         {messages.map((item) => (
-          <div key={item.id}>
-            <p>{item.name}</p>
+          <div className={style.chatBubble} key={item.id}>
+            <h3>{item.name} :</h3>
             <p>{item.text}</p>
           </div>
         ))}
