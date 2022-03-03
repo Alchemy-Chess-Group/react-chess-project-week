@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ProfileProvider } from '../../context/ProfileContext';
-import Profile from '../../components/Profile';
-import ProfileList from '../../components/ProfileList';
+import Profile from '../../components/Profile/Profile';
+import ProfileList from '../../components/ProfileList/ProfileList';
 import { useUser } from '../../context/UserContext';
 import style from './Home.css';
 
