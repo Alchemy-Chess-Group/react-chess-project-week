@@ -2,16 +2,8 @@
 
 .homePage {
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   gap: 16vw;
   align-items: center;
   min-height: 600px;
 }
-
-/* 
-font-family: 'Bungee Shade', cursive;
-font-family: 'Forum', cursive;
-font-family: 'Rye', cursive;
-font-family: 'Titan One', cursive;
-font-family: 'UnifrakturCook', cursive;
-font-family: 'Yatra One', cursive; */

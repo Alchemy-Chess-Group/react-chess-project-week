@@ -5,7 +5,8 @@ import style from './Profile.css';
 
 export default function Profile() {
   const { profile } = useProfile();
-  const { name, displayName, email, win, loss, bio, avatar } = profile;
+  const { name, displayName, email, win, loss, bio } = profile;
+  console.log('profile', name);
 
   return (
     <div className={style.profile}>
@@ -15,7 +16,6 @@ export default function Profile() {
       <div>{win}</div>
       <div>{loss}</div>
       <div>{bio}</div>
-      {/* {avatar ? <div>{avatar}</div> : <div>Default Profile Photo</div>} */}
       <Link to="/edit-profile">Edit</Link>
     </div>
   );

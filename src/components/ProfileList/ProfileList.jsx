@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { getAllProfiles } from '../../services/profiles';
-import ProfilePop from '../ProfilePop';
+import ProfilePop from '../ProfilePop/ProfilePop';
 import style from './ProfileList.css';
 
 export default function ProfileList() {
@@ -18,9 +18,13 @@ export default function ProfileList() {
     <div>
       <ul className={style.listCard}>
         {profiles.map((profile) => (
-          <li key={profile.id}>
-            <ProfilePop profile={profile} />
-          </li>
+          <>
+            {profile.displayName && (
+              <li key={profile.id}>
+                <ProfilePop profile={profile} />
+              </li>
+            )}
+          </>
         ))}
       </ul>
     </div>

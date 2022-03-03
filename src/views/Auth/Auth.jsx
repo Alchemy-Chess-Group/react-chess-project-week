@@ -1,5 +1,4 @@
 import React from 'react';
-import { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import AuthForm from '../../components/AuthForm/AuthForm';
 import { useUser } from '../../context/UserContext';
@@ -14,6 +13,8 @@ export default function Auth({ isSigningUp = false }) {
     try {
       if (isSigningUp) {
         await signUpUser(email, password);
+        const resp = await signInUser(email, password);
+        setUser({ id: resp.id, email: resp.email });
         history.replace('/edit-profile');
       } else {
         const resp = await signInUser(email, password);

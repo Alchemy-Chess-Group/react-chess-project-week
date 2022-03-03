@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { useProfile } from '../context/ProfileContext';
-import { useUser } from '../context/UserContext';
+import { useProfile } from '../../context/ProfileContext';
+import { useUser } from '../../context/UserContext';
 import {
   createProfile,
   deleteProfile,
   updateProfile,
-} from '../services/profiles';
+} from '../../services/profiles';
+import style from './EditProfile.css';
 
 export default function EditProfile() {
   const { user, setUser } = useUser();
@@ -32,7 +33,7 @@ export default function EditProfile() {
     e.preventDefault();
 
     if (user.email) {
-      const resp = await updateProfile({
+      await updateProfile({
         name,
         displayName,
         email,
@@ -40,7 +41,7 @@ export default function EditProfile() {
         avatar,
       });
     } else {
-      const resp = await createProfile({
+      await createProfile({
         name,
         displayName,
         email,
@@ -57,10 +58,10 @@ export default function EditProfile() {
     setUser({});
     history.push('/');
   };
-  console.log(profile);
+
   return (
-    <>
-      <form onSubmit={handleSubmit}>
+    <div className={style.editProfile}>
+      <form className={style.editForm} onSubmit={handleSubmit}>
         <label>Name</label>
         <input
           type="text"
@@ -97,8 +98,8 @@ export default function EditProfile() {
         />
 
         <button type="submit">Save Changes</button>
+        <button onClick={handleDelete}>Delete</button>
       </form>
-      <button onClick={handleDelete}>Delete</button>
-    </>
+    </div>
   );
 }

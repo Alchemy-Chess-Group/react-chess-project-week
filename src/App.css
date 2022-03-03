@@ -14,3 +14,11 @@ h4 {
 h5 {
   font-family: 'Bungee Shade', cursive;
 }
+
+h3 {
+  font-family: 'Rye', cursive;
+}
+
+button {
+  border-radius: 10px;
+}

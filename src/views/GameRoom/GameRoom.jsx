@@ -6,7 +6,7 @@ import style from './GameRoom.css';
 export default function GameRoom() {
   return (
     <>
-      <h3>Game Room</h3>
+      <h3>Game Room #13</h3>
       <div className={style.gameRoom}>
         <ChessBoard />
         <ChatBox />

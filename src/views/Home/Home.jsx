@@ -13,7 +13,7 @@ export default function Home() {
       <ProfileProvider>
         {user.email ? <Profile /> : <div></div>}
         <Link to="/game-room">
-          <h4>Room 13</h4>
+          <h1>Room 13</h1>
         </Link>
         <ProfileList />
       </ProfileProvider>
