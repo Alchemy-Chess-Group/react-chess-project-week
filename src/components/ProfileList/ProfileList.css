@@ -1,0 +1,15 @@
+.listCard {
+  padding: 10px;
+  min-width: 20vw;
+  min-height: 20vw;
+  overflow-y: auto;
+}
+
+li {
+  list-style-type: none;
+  border: 2px solid #418dbd;
+  padding: 5px;
+  border-radius: 10px;
+  background-color: blanchedalmond;
+  margin: 5px;
+}

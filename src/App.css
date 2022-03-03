@@ -20,3 +20,7 @@ font-family: 'Rye', cursive;
 font-family: 'Titan One', cursive;
 font-family: 'UnifrakturCook', cursive;
 font-family: 'Yatra One', cursive; */
+
+button {
+  border-radius: 10px;
+}
