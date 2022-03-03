@@ -1,0 +1,11 @@
+footer {
+  background-color: #418dbd;
+  color: rgb(235, 222, 203);
+  padding: auto;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 50px;
+  display: flex;
+  justify-content: flex-end;
+}

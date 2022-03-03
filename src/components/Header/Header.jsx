@@ -2,8 +2,8 @@ import React from 'react';
 import { Redirect } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
-import { useUser } from '../context/UserContext';
-import { signOutUser } from '../services/users';
+import { useUser } from '../../context/UserContext';
+import { signOutUser } from '../../services/users';
 import style from './Header.css';
 
 export default function Header() {

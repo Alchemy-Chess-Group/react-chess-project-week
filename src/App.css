@@ -2,4 +2,21 @@ body {
   background-color: #f5b368;
   margin: 0;
   color: #474c53;
+  font-size: larger;
+  font-family: 'Yatra One', cursive;
 }
+h1 {
+  font-family: 'Bungee Shade', cursive;
+}
+h4 {
+  font-family: 'Bungee Shade', cursive;
+}
+h5 {
+  font-family: 'Bungee Shade', cursive;
+}
+/* 
+font-family: 'Forum', cursive;
+font-family: 'Rye', cursive;
+font-family: 'Titan One', cursive;
+font-family: 'UnifrakturCook', cursive;
+font-family: 'Yatra One', cursive; */

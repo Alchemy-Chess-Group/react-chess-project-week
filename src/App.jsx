@@ -1,5 +1,5 @@
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import Auth from './views/Auth';
+import Auth from './views/Auth.css/Auth';
 import Home from './views/Home/Home';
 import GameRoom from './views/GameRoom/GameRoom';
 import Layout from './components/Layout';
