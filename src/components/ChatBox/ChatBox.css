@@ -15,3 +15,11 @@ label {
   display: flex;
   justify-content: space-between;
 }
+
+.chatBubble {
+  border: 2px solid #418dbd;
+  padding: 5px;
+  border-radius: 10px;
+  background-color: blanchedalmond;
+  margin: 2px;
+}
