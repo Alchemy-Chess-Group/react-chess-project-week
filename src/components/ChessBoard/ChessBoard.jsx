@@ -2,14 +2,9 @@ import Chess from 'chess.js';
 import { useEffect, useRef } from 'react';
 import { useState } from 'react';
 import { Chessboard } from 'react-chessboard';
-import {
-  createBoard,
-  fetchCurrentGame,
-  subscribeToBoard,
-  updateBoard,
-  getGamePayload,
-} from '../../services/boards';
+import { fetchCurrentGame, updateBoard } from '../../services/boards';
 import { client } from '../../services/client';
+import style from './ChessBoard.css';
 
 export default function ChessBoard() {
   const [game, setGame] = useState(new Chess());
@@ -23,7 +18,6 @@ export default function ChessBoard() {
       setCurrentGame(data);
     };
     fetchGame();
-    console.log('inside useEffect');
   }, []);
 
   useEffect(() => {
@@ -56,9 +50,7 @@ export default function ChessBoard() {
     }
   };
 
-
   const handleReset = async () => {
-    console.log('click');
     game.reset();
     await updateBoard(currentGame.id, game.fen());
   };
@@ -70,11 +62,17 @@ export default function ChessBoard() {
         onPieceDrop={onDrop}
         position={currentGame.currentGameState}
         boardOrientation={color}
-        boardWidth={300}
+        boardWidth={400}
         ref={chessBoardRef}
+        customBoardStyle={{
+          borderRadius: '15px',
+          boxShadow: '0 5px 15px rgba(0, 0, 0, 2)',
+        }}
       />
-      <button onClick={handleSwitchColor}>Switch Color</button>
-      <button onClick={handleReset}>Reset</button>
+      <div className={style.controls}>
+        <button onClick={handleSwitchColor}>Switch Color</button>
+        <button onClick={handleReset}>Reset</button>
+      </div>
     </div>
   );
 }
