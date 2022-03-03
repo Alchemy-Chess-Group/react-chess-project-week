@@ -34,7 +34,14 @@ export async function updateProfile({ name, displayName, email, bio, avatar }) {
 }
 
 export async function deleteProfile(uuid) {
-  console.log('uuid', uuid);
-  const request = await client.from('players').delete('*').match({ uuid });
+  const name = '';
+  const displayName = '';
+  const email = '';
+  const bio = '';
+  const avatar = '';
+  const request = await client
+    .from('players')
+    .update({ name, displayName, email, bio, avatar })
+    .match({ uuid });
   return parseData(request);
 }
