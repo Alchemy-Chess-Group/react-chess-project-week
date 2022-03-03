@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Shade&family=Forum&family=Rye&family=Titan+One&family=UnifrakturCook:wght@700&family=Yatra+One&display=swap');
+
+.title {
+  font-family: 'Bungee Shade', cursive;
+  cursor: pointer;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  background-color: #418dbd;
+  color: rgb(235, 222, 203);
+}
+
+button {
+  height: 35px;
+}

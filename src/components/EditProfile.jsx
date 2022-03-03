@@ -19,6 +19,8 @@ export default function EditProfile() {
   const [bio, setBio] = useState(profile.bio);
   const [avatar, setAvatar] = useState(profile.avatar);
 
+  console.log('inside edit');
+
   useEffect(() => {
     setName(profile.name);
     setDisplayName(profile.displayName);
@@ -29,7 +31,7 @@ export default function EditProfile() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (profile.name) {
+    if (user.email) {
       const resp = await updateProfile({
         name,
         displayName,

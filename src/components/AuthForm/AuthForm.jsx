@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
+import style from './AuthForm.css';
 
 export default function AuthForm({ handleAuth }) {
   const [email, setEmail] = useState('');
@@ -11,7 +12,7 @@ export default function AuthForm({ handleAuth }) {
   };
 
   return (
-    <form>
+    <form className={style.authForm}>
       <label>
         <input
           onChange={(e) => setEmail(e.target.value)}
