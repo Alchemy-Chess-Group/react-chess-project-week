@@ -1,9 +1,10 @@
 import React from 'react';
 import { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import AuthForm from '../components/AuthForm';
-import { useUser } from '../context/UserContext';
-import { signInUser, signUpUser } from '../services/users';
+import AuthForm from '../../components/AuthForm/AuthForm';
+import { useUser } from '../../context/UserContext';
+import { signInUser, signUpUser } from '../../services/users';
+import style from './Auth.css';
 
 export default function Auth({ isSigningUp = false }) {
   const { setUser } = useUser();
@@ -24,19 +25,21 @@ export default function Auth({ isSigningUp = false }) {
     }
   };
   return (
-    <div>
-      <AuthForm handleAuth={handleAuth} />
-      {isSigningUp ? (
-        <>
-          <p>Have an account? Sign In</p>
-          <Link to="/login">Login</Link>
-        </>
-      ) : (
-        <>
-          <p>Don't have an account? Register</p>
-          <Link to="/register">Register</Link>
-        </>
-      )}
+    <div className={style.authContainer}>
+      <div className={style.authCard}>
+        <AuthForm handleAuth={handleAuth} />
+        {isSigningUp ? (
+          <>
+            <p>Have an account? Sign In</p>
+            <Link to="/login">Login</Link>
+          </>
+        ) : (
+          <>
+            <p>Don't have an account?</p>
+            <Link to="/register">Register</Link>
+          </>
+        )}
+      </div>
     </div>
   );
 }
