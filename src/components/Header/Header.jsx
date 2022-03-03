@@ -26,16 +26,23 @@ export default function Header() {
   };
 
   return (
-    <div className={style.header}>
-      <h1 onClick={handleHome} className={style.title}>
-        Once Upawn a Time
-      </h1>
-
-      {user.email ? (
-        <button onClick={handleSignOut}>Sign Out</button>
-      ) : (
-        <button onClick={handleSignIn}>Sign In</button>
-      )}
-    </div>
+    <header>
+      <div className={style.header}>
+        <h1 onClick={handleHome} className={style.title}>
+          Once Upawn a Time
+        </h1>
+      </div>
+      <span>
+        {user.email ? (
+          <button onClick={handleSignOut} className={style.headerButton}>
+            Sign Out
+          </button>
+        ) : (
+          <button onClick={handleSignIn} className={style.headerButton}>
+            Sign In
+          </button>
+        )}
+      </span>
+    </header>
   );
 }

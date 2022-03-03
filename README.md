@@ -8,4 +8,4 @@ made a new adria branch
 
 register button should redirect to /edit-profile
 make save changes button on edit-profile redirect to /
-do not allow empty fields
+do not allow empty fields.
