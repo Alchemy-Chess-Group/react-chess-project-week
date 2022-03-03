@@ -2,7 +2,7 @@
 
 .homePage {
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   gap: 16vw;
   align-items: center;
   min-height: 600px;
