@@ -1,12 +1,12 @@
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import Home from './views/Home';
-import Auth from './views/Auth';
+import Auth from './views/Auth.css/Auth';
+import Home from './views/Home/Home';
 import GameRoom from './views/GameRoom/GameRoom';
 import Layout from './components/Layout';
-
 import EditProfile from './components/EditProfile';
 import ProtectedRoute from './components/ProtectedRoute';
 import { ProfileProvider } from './context/ProfileContext';
+import style from './App.css';
 
 export default function App() {
   return (
