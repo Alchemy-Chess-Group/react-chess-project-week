@@ -27,12 +27,10 @@ export default function App() {
               <ProtectedRoute exact path="/game-room">
                 <GameRoom />
               </ProtectedRoute>
-            </ProfileProvider>
-            <ProtectedRoute path="/edit-profile">
-              <ProfileProvider>
+              <ProtectedRoute path="/edit-profile">
                 <EditProfile />
-              </ProfileProvider>
-            </ProtectedRoute>
+              </ProtectedRoute>
+            </ProfileProvider>
           </Switch>
         </Layout>
       </BrowserRouter>
