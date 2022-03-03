@@ -1,11 +1,12 @@
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Home from './components/Home';
 import Auth from './views/Auth';
-import GameRoom from './views/GameRoom';
+import GameRoom from './views/GameRoom/GameRoom';
 import Layout from './components/Layout';
 
 import EditProfile from './components/EditProfile';
 import ProtectedRoute from './components/ProtectedRoute';
+import { ProfileProvider } from './context/ProfileContext';
 
 export default function App() {
   return (
@@ -26,7 +27,9 @@ export default function App() {
               <GameRoom />
             </Route>
             <ProtectedRoute exact path="/edit-profile">
-              <EditProfile />
+              <ProfileProvider>
+                <EditProfile />
+              </ProfileProvider>
             </ProtectedRoute>
           </Switch>
         </Layout>
