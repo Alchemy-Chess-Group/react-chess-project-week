@@ -4,6 +4,7 @@ import { useLocation } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
 import { useUser } from '../context/UserContext';
 import { signOutUser } from '../services/users';
+import style from './Header.css';
 
 export default function Header() {
   const { user, setUser } = useUser();
@@ -25,14 +26,16 @@ export default function Header() {
   };
 
   return (
-    <div>
-      <h1>Once Upawn a Time</h1>
+    <div className={style.header}>
+      <h1 onClick={handleHome} className={style.title}>
+        Once Upawn a Time
+      </h1>
+
       {user.email ? (
         <button onClick={handleSignOut}>Sign Out</button>
       ) : (
         <button onClick={handleSignIn}>Sign In</button>
       )}
-      <button onClick={handleHome}>Home</button>
     </div>
   );
 }
