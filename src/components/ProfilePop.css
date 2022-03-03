@@ -1,6 +1,7 @@
 .popupBox {
   position: fixed;
   background: #00000050;
+  color: #474c53;
   width: 100%;
   height: 100vh;
   top: 0;

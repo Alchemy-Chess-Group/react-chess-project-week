@@ -15,11 +15,10 @@ export default function ProfileList() {
   }, []);
 
   return (
-    <div className={style.listCard}>
-      <ul>
+    <div>
+      <ul className={style.listCard}>
         {profiles.map((profile) => (
           <li key={profile.id}>
-            <li>{profile.displayName}</li>
             <ProfilePop profile={profile} />
           </li>
         ))}

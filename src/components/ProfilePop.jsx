@@ -11,7 +11,7 @@ export default function ProfilePop(profile) {
   };
   return (
     <div>
-      <button onClick={togglePop}>More</button>
+      <p onClick={togglePop}>{displayName}</p>
       {pop && (
         <div className={style.popupBox}>
           <div className={style.box}>

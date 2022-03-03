@@ -1,7 +1,7 @@
 .listCard {
   padding: 10px;
   min-width: 20vw;
-  min-height: 20vw;
+  height: 20vw;
   overflow-y: auto;
 }
 
@@ -12,4 +12,10 @@ li {
   border-radius: 10px;
   background-color: blanchedalmond;
   margin: 5px;
+  max-height: 3vw;
+  cursor: pointer;
+}
+
+li:hover {
+  color: rgb(181, 124, 219);
 }
