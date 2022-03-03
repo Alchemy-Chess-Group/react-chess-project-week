@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import style from './AuthForm.css';
 
 export default function AuthForm({ handleAuth }) {
