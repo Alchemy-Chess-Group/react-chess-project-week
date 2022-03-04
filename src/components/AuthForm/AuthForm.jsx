@@ -15,6 +15,7 @@ export default function AuthForm({ handleAuth }) {
     <form className={style.authForm}>
       <label>
         <input
+          aria-label="email-box"
           onChange={(e) => setEmail(e.target.value)}
           value={email}
           type="email"
@@ -25,6 +26,7 @@ export default function AuthForm({ handleAuth }) {
 
       <label>
         <input
+          aria-label="password-box"
           onChange={(e) => setPassword(e.target.value)}
           value={password}
           type="password"

@@ -4,7 +4,6 @@ import React, { useState } from 'react';
 export default function ProfilePop(profile) {
   const [pop, setPop] = useState(false);
   const { name, displayName, email, bio } = profile.profile;
-  console.log(profile, name);
 
   const togglePop = () => {
     setPop(!pop);
