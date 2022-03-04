@@ -1,13 +1,25 @@
 # react-chess-project-week
 
-create auth view (homepage)
+Link to our Miro Board for planning and motivation
 
-Dev Branch creation edit
+https://miro.com/app/board/uXjVOJ25PNw=/
 
-made a new adria branch
+## Adria Ivanitsky
 
-register button should redirect to /edit-profile
-make save changes button on edit-profile redirect to /
-do not allow empty fields.
+https://www.linkedin.com/in/adriaivanitsky/
+https://github.com/adriaivanitsky
 
-changing something in read me
+## Minoka Kakizaki 8:52 AM
+
+https://www.linkedin.com/in/minoka-kakizaki/
+https://github.com/kakizaki55
+
+## Noah Del Toro Smyth
+
+https://www.linkedin.com/in/noahdeltorosmyth/
+https://github.com/NoahDeltoroSmyth
+
+## James Demiraiakian
+
+https://www.linkedin.com/in/james-demiraiakian/
+https://github.com/james-demiraiakian
