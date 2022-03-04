@@ -2,7 +2,7 @@ import { client, parseData } from './client';
 
 export async function getProfile(uuid) {
   const request = await client.from('players').select().match({ uuid });
-  console.log('ewqewqeqw', parseData(request));
+
   return parseData(request);
 }
 

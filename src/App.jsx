@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import Auth from './views/Auth/Auth';
 import Home from './views/Home/Home';
 import GameRoom from './views/GameRoom/GameRoom';
@@ -11,29 +11,27 @@ import './App.css';
 export default function App() {
   return (
     <>
-      <BrowserRouter>
-        <Layout>
-          <Switch>
-            <Route exact path="/">
-              <Home />
+      <Layout>
+        <Switch>
+          <Route exact path="/">
+            <Home />
+          </Route>
+          <ProfileProvider>
+            <Route exact path="/login">
+              <Auth />
             </Route>
-            <ProfileProvider>
-              <Route exact path="/login">
-                <Auth />
-              </Route>
-              <Route exact path="/register">
-                <Auth isSigningUp />
-              </Route>
-              <ProtectedRoute exact path="/game-room">
-                <GameRoom />
-              </ProtectedRoute>
-              <ProtectedRoute path="/edit-profile">
-                <EditProfile />
-              </ProtectedRoute>
-            </ProfileProvider>
-          </Switch>
-        </Layout>
-      </BrowserRouter>
+            <Route exact path="/register">
+              <Auth isSigningUp />
+            </Route>
+            <ProtectedRoute exact path="/game-room">
+              <GameRoom />
+            </ProtectedRoute>
+            <ProtectedRoute path="/edit-profile">
+              <EditProfile />
+            </ProtectedRoute>
+          </ProfileProvider>
+        </Switch>
+      </Layout>
     </>
   );
 }
