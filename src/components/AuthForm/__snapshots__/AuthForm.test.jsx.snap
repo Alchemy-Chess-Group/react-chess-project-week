@@ -7,6 +7,7 @@ exports[`auth page should render a form 1`] = `
   >
     <label>
       <input
+        aria-label="email-box"
         placeholder="email"
         required=""
         type="email"
@@ -15,6 +16,7 @@ exports[`auth page should render a form 1`] = `
     </label>
     <label>
       <input
+        aria-label="password-box"
         placeholder="password"
         required=""
         type="password"
