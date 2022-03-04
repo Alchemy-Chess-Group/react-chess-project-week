@@ -18,7 +18,6 @@ export default function ChessBoard() {
       setCurrentGame(data);
     };
     fetchGame();
-    console.log('inside useEffect');
   }, []);
 
   useEffect(() => {
@@ -50,7 +49,6 @@ export default function ChessBoard() {
       setColor('white');
     }
   };
-
 
   const handleReset = async () => {
     game.reset();

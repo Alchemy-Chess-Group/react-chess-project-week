@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { useProfile } from '../../context/ProfileContext';
-import { useUser } from '../../context/UserContext';
+import { useProfile } from '../context/ProfileContext';
+import { useUser } from '../context/UserContext';
 import {
   createProfile,
   deleteProfile,
   updateProfile,
-} from '../../services/profiles';
-import style from './EditProfile.css';
+} from '../services/profiles';
 
 export default function EditProfile() {
   const { user, setUser } = useUser();
@@ -20,7 +19,6 @@ export default function EditProfile() {
   const [bio, setBio] = useState(profile.bio);
   const [avatar, setAvatar] = useState(profile.avatar);
 
-
   useEffect(() => {
     setName(profile.name);
     setDisplayName(profile.displayName);
@@ -32,7 +30,7 @@ export default function EditProfile() {
     e.preventDefault();
 
     if (user.email) {
-      await updateProfile({
+      const resp = await updateProfile({
         name,
         displayName,
         email,
@@ -40,7 +38,7 @@ export default function EditProfile() {
         avatar,
       });
     } else {
-      await createProfile({
+      const resp = await createProfile({
         name,
         displayName,
         email,
@@ -59,8 +57,8 @@ export default function EditProfile() {
   };
 
   return (
-    <div className={style.editProfile}>
-      <form className={style.editForm} onSubmit={handleSubmit}>
+    <>
+      <form onSubmit={handleSubmit}>
         <label>Name</label>
         <input
           type="text"
@@ -97,8 +95,8 @@ export default function EditProfile() {
         />
 
         <button type="submit">Save Changes</button>
-        <button onClick={handleDelete}>Delete</button>
       </form>
-    </div>
+      <button onClick={handleDelete}>Delete</button>
+    </>
   );
 }
