@@ -1,13 +1,5 @@
 # react-chess-project-week
 
-create auth view (homepage)
+Link to our Miro Board for planning and motivation
 
-Dev Branch creation edit
-
-made a new adria branch
-
-register button should redirect to /edit-profile
-make save changes button on edit-profile redirect to /
-do not allow empty fields.
-
-changing something in read me
+https://miro.com/app/board/uXjVOJ25PNw=/
