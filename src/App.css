@@ -1,0 +1,24 @@
+body {
+  background-color: #f5b368;
+  margin: 0;
+  color: #474c53;
+  font-size: larger;
+  font-family: 'Yatra One', cursive;
+}
+h1 {
+  font-family: 'Bungee Shade', cursive;
+}
+h4 {
+  font-family: 'Bungee Shade', cursive;
+}
+h5 {
+  font-family: 'Bungee Shade', cursive;
+}
+
+h3 {
+  font-family: 'Rye', cursive;
+}
+
+button {
+  border-radius: 10px;
+}

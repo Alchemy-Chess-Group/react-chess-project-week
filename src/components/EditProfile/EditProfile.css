@@ -1,0 +1,8 @@
+.editForm {
+  width: 30vw;
+}
+
+.editProfile {
+  display: flex;
+  justify-content: center;
+}

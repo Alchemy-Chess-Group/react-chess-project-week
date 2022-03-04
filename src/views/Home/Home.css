@@ -1,0 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Shade&family=Forum&family=Rye&family=Titan+One&family=UnifrakturCook:wght@700&family=Yatra+One&display=swap');
+
+.homePage {
+  display: flex;
+  justify-content: space-evenly;
+  gap: 16vw;
+  align-items: center;
+  min-height: 600px;
+}
