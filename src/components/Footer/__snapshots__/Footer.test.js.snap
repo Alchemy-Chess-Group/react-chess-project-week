@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test the footer renders 1`] = `
+<div>
+  <footer
+    class="footer"
+  >
+    <h5>
+      alchemy code lab
+    </h5>
+  </footer>
+</div>
+`;

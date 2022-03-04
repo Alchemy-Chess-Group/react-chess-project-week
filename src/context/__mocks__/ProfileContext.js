@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useState } from 'react';
-import { getProfile } from '../services/profiles';
-import { useUser } from './UserContext';
+import { getProfile } from '../../services/profiles';
+import { useUser } from '../UserContext';
 
 export const ProfileContext = createContext();
 

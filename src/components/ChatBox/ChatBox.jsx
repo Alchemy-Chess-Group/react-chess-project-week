@@ -14,7 +14,7 @@ export default function ChatBox() {
   useEffect(() => {
     const fetchData = async () => {
       const data = await fetchMessages();
-      console.log('data', data);
+
       setMessages(data);
     };
     fetchData();
