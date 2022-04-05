@@ -4,8 +4,9 @@ import { useProfile } from '../../context/ProfileContext';
 import style from './Profile.css';
 
 export default function Profile() {
-  const { profile } = useProfile();
-  const { name, displayName, email, win, loss, bio } = profile;
+  const {
+    profile: { name, displayName, email, win, loss, bio },
+  } = useProfile();
 
   return (
     <div className={style.profile}>
