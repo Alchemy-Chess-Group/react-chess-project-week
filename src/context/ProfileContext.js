@@ -17,12 +17,16 @@ const ProfileProvider = ({ children }) => {
   });
 
   useEffect(() => {
-    const fetchData = async () => {
-      const [resp] = await getProfile(user.id);
-      setProfile(resp);
-    };
-    fetchData();
-  }, []);
+    // avoid an error on load when user logged out by wrapping this in
+    // an if
+    if (user.id) {
+      const fetchData = async () => {
+        const [resp] = await getProfile(user.id);
+        setProfile(resp);
+      };
+      fetchData();
+    }
+  }, [user.id]);
 
   const context = { profile, setProfile };
   return (
